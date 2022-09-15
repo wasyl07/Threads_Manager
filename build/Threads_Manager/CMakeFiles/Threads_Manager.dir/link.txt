@@ -1,0 +1,2 @@
+/usr/bin/ar qc libThreads_Managerd.a CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o
+/usr/bin/ranlib libThreads_Managerd.a

@@ -1,0 +1,13 @@
+/home/adam/Projects/Threads_Manager/build/CMakeFiles/edit_cache.dir
+/home/adam/Projects/Threads_Manager/build/CMakeFiles/rebuild_cache.dir
+/home/adam/Projects/Threads_Manager/build/CMakeFiles/list_install_components.dir
+/home/adam/Projects/Threads_Manager/build/CMakeFiles/install.dir
+/home/adam/Projects/Threads_Manager/build/CMakeFiles/install/local.dir
+/home/adam/Projects/Threads_Manager/build/CMakeFiles/install/strip.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/Threads_Manager.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/edit_cache.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/rebuild_cache.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/list_install_components.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/install.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/install/local.dir
+/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/install/strip.dir

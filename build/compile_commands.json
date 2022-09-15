@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/adam/Projects/Threads_Manager/build/Threads_Manager",
+  "command": "/usr/bin/clang++  -I/home/adam/Projects/Threads_Manager/Threads_Manager/src -I/home/adam/Projects/Threads_Manager/Threads_Manager/include -g -std=gnu++11 -o CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o -c /home/adam/Projects/Threads_Manager/Threads_Manager/src/Threads_Manager.cpp",
+  "file": "/home/adam/Projects/Threads_Manager/Threads_Manager/src/Threads_Manager.cpp"
+}
+]
