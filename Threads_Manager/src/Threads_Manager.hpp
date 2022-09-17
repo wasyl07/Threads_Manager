@@ -3,6 +3,7 @@
 #include "Thread.hpp"
 #include <vector>
 
+
 namespace Threading
 {
     class Thread_Handler{
@@ -23,8 +24,7 @@ namespace Threading
         {
             console.Display("Thread handler online!");
         }
-        Operation_State create_thread(Thread);
-        Operation_State add_thread(Thread);
+        Operation_State add_thread(void *(*fun_ptr) (void*), void* arg);
         Operation_State pause_thread(Thread);
         Operation_State resume_state(Thread);
         Operation_State delete_thread(Thread);
