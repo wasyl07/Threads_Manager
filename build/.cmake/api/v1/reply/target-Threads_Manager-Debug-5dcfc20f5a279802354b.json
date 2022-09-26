@@ -79,11 +79,11 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "/home/adam/Projects/Threads_Manager/Threads_Manager/src"
+					"path" : "/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/src"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/home/adam/Projects/Threads_Manager/Threads_Manager/include"
+					"path" : "/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/include"
 				}
 			],
 			"language" : "CXX",
@@ -113,7 +113,7 @@
 		],
 		"prefix" : 
 		{
-			"path" : "/usr/local"
+			"path" : "/home/adam/Projects/Threads/Threads_Manager/install"
 		}
 	},
 	"name" : "Threads_Manager",
@@ -138,7 +138,7 @@
 		{
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
-			"path" : "Threads_Manager/src/Threads_Manager.cpp",
+			"path" : "Threads_Manager/src/Task_Manager.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

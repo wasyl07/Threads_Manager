@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adam/Projects/Threads_Manager/Threads_Manager/src/Threads_Manager.cpp" "Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o" "gcc" "Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o.d"
+  "/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/src/Task_Manager.cpp" "Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o" "gcc" "Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o.d"
   )
 
 # Targets to which this target links.

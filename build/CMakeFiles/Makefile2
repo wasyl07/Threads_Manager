@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adam/Projects/Threads_Manager
+CMAKE_SOURCE_DIR = /home/adam/Projects/Threads/Threads_Manager
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adam/Projects/Threads_Manager/build
+CMAKE_BINARY_DIR = /home/adam/Projects/Threads/Threads_Manager/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -96,14 +96,14 @@ Threads_Manager/clean: Threads_Manager/CMakeFiles/Threads_Manager.dir/clean
 Threads_Manager/CMakeFiles/Threads_Manager.dir/all:
 	$(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/depend
 	$(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adam/Projects/Threads_Manager/build/CMakeFiles --progress-num=1,2 "Built target Threads_Manager"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles --progress-num=1,2 "Built target Threads_Manager"
 .PHONY : Threads_Manager/CMakeFiles/Threads_Manager.dir/all
 
 # Build rule for subdir invocation for target.
 Threads_Manager/CMakeFiles/Threads_Manager.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads_Manager/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/CMakeFiles/Threads_Manager.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads_Manager/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles 0
 .PHONY : Threads_Manager/CMakeFiles/Threads_Manager.dir/rule
 
 # Convenience name for target.

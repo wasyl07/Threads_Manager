@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/adam/Projects/Threads_Manager/Threads_Manager/src -I/home/adam/Projects/Threads_Manager/Threads_Manager/include
+CXX_INCLUDES = -I/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/src -I/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/include
 
 CXX_FLAGS = -g -std=gnu++11
 

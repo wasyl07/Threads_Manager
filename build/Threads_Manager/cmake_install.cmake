@@ -1,8 +1,8 @@
-# Install script for directory: /home/adam/Projects/Threads_Manager/Threads_Manager
+# Install script for directory: /home/adam/Projects/Threads/Threads_Manager/Threads_Manager
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr/local")
+  set(CMAKE_INSTALL_PREFIX "/home/adam/Projects/Threads/Threads_Manager/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,18 +43,18 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adam/Projects/Threads_Manager/build/Threads_Manager/libThreads_Managerd.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/libThreads_Managerd.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Threads_Manager" TYPE FILE FILES "/home/adam/Projects/Threads_Manager/Threads_Manager/include/Threading.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Threads_Manager" TYPE FILE FILES "/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/include/Tasking.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/cmake/Threads_ManagerTargets.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/cmake/Threads_ManagerTargets.cmake"
-         "/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/Export/cmake/Threads_ManagerTargets.cmake")
+         "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/CMakeFiles/Export/cmake/Threads_ManagerTargets.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/cmake/Threads_ManagerTargets-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -63,16 +63,16 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/Export/cmake/Threads_ManagerTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/CMakeFiles/Export/cmake/Threads_ManagerTargets.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/Export/cmake/Threads_ManagerTargets-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/CMakeFiles/Export/cmake/Threads_ManagerTargets-debug.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES
-    "/home/adam/Projects/Threads_Manager/build/Threads_Manager/Threads_ManagerConfig.cmake"
-    "/home/adam/Projects/Threads_Manager/build/Threads_Manager/Threads_ManagerConfigVersion.cmake"
+    "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/Threads_ManagerConfig.cmake"
+    "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/Threads_ManagerConfigVersion.cmake"
     )
 endif()
 

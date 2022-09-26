@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adam/Projects/Threads_Manager
+CMAKE_SOURCE_DIR = /home/adam/Projects/Threads/Threads_Manager
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adam/Projects/Threads_Manager/build
+CMAKE_BINARY_DIR = /home/adam/Projects/Threads/Threads_Manager/build
 
 # Include any dependencies generated for this target.
 include Threads_Manager/CMakeFiles/Threads_Manager.dir/depend.make
@@ -69,43 +69,43 @@ include Threads_Manager/CMakeFiles/Threads_Manager.dir/progress.make
 # Include the compile flags for this target's objects.
 include Threads_Manager/CMakeFiles/Threads_Manager.dir/flags.make
 
-Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o: Threads_Manager/CMakeFiles/Threads_Manager.dir/flags.make
-Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o: ../Threads_Manager/src/Threads_Manager.cpp
-Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o: Threads_Manager/CMakeFiles/Threads_Manager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adam/Projects/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o"
-	cd /home/adam/Projects/Threads_Manager/build/Threads_Manager && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o -MF CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o.d -o CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o -c /home/adam/Projects/Threads_Manager/Threads_Manager/src/Threads_Manager.cpp
+Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o: Threads_Manager/CMakeFiles/Threads_Manager.dir/flags.make
+Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o: ../Threads_Manager/src/Task_Manager.cpp
+Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o: Threads_Manager/CMakeFiles/Threads_Manager.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o"
+	cd /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o -MF CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o.d -o CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o -c /home/adam/Projects/Threads/Threads_Manager/Threads_Manager/src/Task_Manager.cpp
 
-Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.i"
-	cd /home/adam/Projects/Threads_Manager/build/Threads_Manager && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Projects/Threads_Manager/Threads_Manager/src/Threads_Manager.cpp > CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.i
+Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.i"
+	cd /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Projects/Threads/Threads_Manager/Threads_Manager/src/Task_Manager.cpp > CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.i
 
-Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.s"
-	cd /home/adam/Projects/Threads_Manager/build/Threads_Manager && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Projects/Threads_Manager/Threads_Manager/src/Threads_Manager.cpp -o CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.s
+Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.s"
+	cd /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Projects/Threads/Threads_Manager/Threads_Manager/src/Task_Manager.cpp -o CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.s
 
 # Object files for target Threads_Manager
 Threads_Manager_OBJECTS = \
-"CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o"
+"CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o"
 
 # External object files for target Threads_Manager
 Threads_Manager_EXTERNAL_OBJECTS =
 
-Threads_Manager/libThreads_Managerd.a: Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o
+Threads_Manager/libThreads_Managerd.a: Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o
 Threads_Manager/libThreads_Managerd.a: Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make
 Threads_Manager/libThreads_Managerd.a: Threads_Manager/CMakeFiles/Threads_Manager.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/adam/Projects/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libThreads_Managerd.a"
-	cd /home/adam/Projects/Threads_Manager/build/Threads_Manager && $(CMAKE_COMMAND) -P CMakeFiles/Threads_Manager.dir/cmake_clean_target.cmake
-	cd /home/adam/Projects/Threads_Manager/build/Threads_Manager && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Threads_Manager.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libThreads_Managerd.a"
+	cd /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager && $(CMAKE_COMMAND) -P CMakeFiles/Threads_Manager.dir/cmake_clean_target.cmake
+	cd /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Threads_Manager.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 Threads_Manager/CMakeFiles/Threads_Manager.dir/build: Threads_Manager/libThreads_Managerd.a
 .PHONY : Threads_Manager/CMakeFiles/Threads_Manager.dir/build
 
 Threads_Manager/CMakeFiles/Threads_Manager.dir/clean:
-	cd /home/adam/Projects/Threads_Manager/build/Threads_Manager && $(CMAKE_COMMAND) -P CMakeFiles/Threads_Manager.dir/cmake_clean.cmake
+	cd /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager && $(CMAKE_COMMAND) -P CMakeFiles/Threads_Manager.dir/cmake_clean.cmake
 .PHONY : Threads_Manager/CMakeFiles/Threads_Manager.dir/clean
 
 Threads_Manager/CMakeFiles/Threads_Manager.dir/depend:
-	cd /home/adam/Projects/Threads_Manager/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adam/Projects/Threads_Manager /home/adam/Projects/Threads_Manager/Threads_Manager /home/adam/Projects/Threads_Manager/build /home/adam/Projects/Threads_Manager/build/Threads_Manager /home/adam/Projects/Threads_Manager/build/Threads_Manager/CMakeFiles/Threads_Manager.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adam/Projects/Threads/Threads_Manager /home/adam/Projects/Threads/Threads_Manager/Threads_Manager /home/adam/Projects/Threads/Threads_Manager/build /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/CMakeFiles/Threads_Manager.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : Threads_Manager/CMakeFiles/Threads_Manager.dir/depend
 

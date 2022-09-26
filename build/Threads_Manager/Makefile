@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adam/Projects/Threads_Manager
+CMAKE_SOURCE_DIR = /home/adam/Projects/Threads/Threads_Manager
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adam/Projects/Threads_Manager/build
+CMAKE_BINARY_DIR = /home/adam/Projects/Threads/Threads_Manager/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adam/Projects/Threads_Manager/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads_Manager/build/CMakeFiles /home/adam/Projects/Threads_Manager/build/Threads_Manager//CMakeFiles/progress.marks
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads_Manager/build/CMakeFiles 0
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles /home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager//CMakeFiles/progress.marks
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/clean
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/preinstall
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/preinstall
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adam/Projects/Threads_Manager/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Threads_Manager/CMakeFiles/Threads_Manager.dir/rule:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/CMakeFiles/Threads_Manager.dir/rule
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Threads_Manager/CMakeFiles/Threads_Manager.dir/rule
 .PHONY : Threads_Manager/CMakeFiles/Threads_Manager.dir/rule
 
 # Convenience name for target.
@@ -172,32 +172,32 @@ Threads_Manager: Threads_Manager/CMakeFiles/Threads_Manager.dir/rule
 
 # fast build rule for target.
 Threads_Manager/fast:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/build
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/build
 .PHONY : Threads_Manager/fast
 
-src/Threads_Manager.o: src/Threads_Manager.cpp.o
-.PHONY : src/Threads_Manager.o
+src/Task_Manager.o: src/Task_Manager.cpp.o
+.PHONY : src/Task_Manager.o
 
 # target to build an object file
-src/Threads_Manager.cpp.o:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o
-.PHONY : src/Threads_Manager.cpp.o
+src/Task_Manager.cpp.o:
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o
+.PHONY : src/Task_Manager.cpp.o
 
-src/Threads_Manager.i: src/Threads_Manager.cpp.i
-.PHONY : src/Threads_Manager.i
+src/Task_Manager.i: src/Task_Manager.cpp.i
+.PHONY : src/Task_Manager.i
 
 # target to preprocess a source file
-src/Threads_Manager.cpp.i:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.i
-.PHONY : src/Threads_Manager.cpp.i
+src/Task_Manager.cpp.i:
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.i
+.PHONY : src/Task_Manager.cpp.i
 
-src/Threads_Manager.s: src/Threads_Manager.cpp.s
-.PHONY : src/Threads_Manager.s
+src/Task_Manager.s: src/Task_Manager.cpp.s
+.PHONY : src/Task_Manager.s
 
 # target to generate assembly for a file
-src/Threads_Manager.cpp.s:
-	cd /home/adam/Projects/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.s
-.PHONY : src/Threads_Manager.cpp.s
+src/Task_Manager.cpp.s:
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(MAKE) $(MAKESILENT) -f Threads_Manager/CMakeFiles/Threads_Manager.dir/build.make Threads_Manager/CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.s
+.PHONY : src/Task_Manager.cpp.s
 
 # Help Target
 help:
@@ -212,9 +212,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Threads_Manager"
-	@echo "... src/Threads_Manager.o"
-	@echo "... src/Threads_Manager.i"
-	@echo "... src/Threads_Manager.s"
+	@echo "... src/Task_Manager.o"
+	@echo "... src/Task_Manager.i"
+	@echo "... src/Task_Manager.s"
 .PHONY : help
 
 
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adam/Projects/Threads_Manager/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adam/Projects/Threads/Threads_Manager/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

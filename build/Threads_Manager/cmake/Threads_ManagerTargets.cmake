@@ -45,14 +45,14 @@ unset(_expectedTargets)
 add_library(Threading::Threads_Manager STATIC IMPORTED)
 
 set_target_properties(Threading::Threads_Manager PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/home/adam/Projects/Threads_Manager/Threads_Manager/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/adam/Projects/Threads/Threads_Manager/Threads_Manager/include"
 )
 
 # Import target "Threading::Threads_Manager" for configuration "Debug"
 set_property(TARGET Threading::Threads_Manager APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(Threading::Threads_Manager PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "/home/adam/Projects/Threads_Manager/build/Threads_Manager/libThreads_Managerd.a"
+  IMPORTED_LOCATION_DEBUG "/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/libThreads_Managerd.a"
   )
 
 # This file does not depend on other imported targets which have

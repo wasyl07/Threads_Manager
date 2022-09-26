@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o"
-  "CMakeFiles/Threads_Manager.dir/src/Threads_Manager.cpp.o.d"
+  "CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o"
+  "CMakeFiles/Threads_Manager.dir/src/Task_Manager.cpp.o.d"
   "libThreads_Managerd.a"
   "libThreads_Managerd.pdb"
 )

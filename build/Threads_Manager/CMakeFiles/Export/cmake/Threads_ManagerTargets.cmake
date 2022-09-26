@@ -52,7 +52,7 @@ endif()
 add_library(Threading::Threads_Manager STATIC IMPORTED)
 
 set_target_properties(Threading::Threads_Manager PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
 )
 
 # Load information for each installed configuration.

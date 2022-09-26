@@ -18,7 +18,7 @@ add_library(${PROJECT_NAME} STATIC)
 
 target_sources(${PROJECT_NAME}
     PRIVATE
-        src/Threads_Manager.cpp
+        src/Task_Manager.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -34,7 +34,7 @@ target_include_directories(${PROJECT_NAME}
 
 # without it public headers won't get installed
 set(public_headers
-    include/Threading.h
+    include/Tasking.h
 )
 
 # not for MSVC

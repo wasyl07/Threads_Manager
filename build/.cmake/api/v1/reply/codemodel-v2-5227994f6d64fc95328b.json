@@ -18,7 +18,7 @@
 				{
 					"build" : "Threads_Manager",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-Threads_Manager-Debug-9800ddb863b8ef93e9d9.json",
+					"jsonFile" : "directory-Threads_Manager-Debug-c8a8070dbffdb5d93ede.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.0.0"
@@ -64,7 +64,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "Threads_Manager::@3b9ae45d09ac24382073",
-					"jsonFile" : "target-Threads_Manager-Debug-6b35b2ae90464eb15d13.json",
+					"jsonFile" : "target-Threads_Manager-Debug-5dcfc20f5a279802354b.json",
 					"name" : "Threads_Manager",
 					"projectIndex" : 1
 				}
@@ -74,8 +74,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/adam/Projects/Threads_Manager/build",
-		"source" : "/home/adam/Projects/Threads_Manager"
+		"build" : "/home/adam/Projects/Threads/Threads_Manager/build",
+		"source" : "/home/adam/Projects/Threads/Threads_Manager"
 	},
 	"version" : 
 	{

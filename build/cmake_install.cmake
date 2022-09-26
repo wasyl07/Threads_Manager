@@ -1,8 +1,8 @@
-# Install script for directory: /home/adam/Projects/Threads_Manager
+# Install script for directory: /home/adam/Projects/Threads/Threads_Manager
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr/local")
+  set(CMAKE_INSTALL_PREFIX "/home/adam/Projects/Threads/Threads_Manager/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/adam/Projects/Threads_Manager/build/Threads_Manager/cmake_install.cmake")
+  include("/home/adam/Projects/Threads/Threads_Manager/build/Threads_Manager/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/adam/Projects/Threads_Manager/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/adam/Projects/Threads/Threads_Manager/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
