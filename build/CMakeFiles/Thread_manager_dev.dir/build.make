@@ -73,29 +73,29 @@ CMakeFiles/Thread_manager_dev.dir/main.cpp.o: CMakeFiles/Thread_manager_dev.dir/
 CMakeFiles/Thread_manager_dev.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Thread_manager_dev.dir/main.cpp.o: CMakeFiles/Thread_manager_dev.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Thread_manager_dev.dir/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Thread_manager_dev.dir/main.cpp.o -MF CMakeFiles/Thread_manager_dev.dir/main.cpp.o.d -o CMakeFiles/Thread_manager_dev.dir/main.cpp.o -c /home/adam/Projects/Threads/Threads_Manager/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Thread_manager_dev.dir/main.cpp.o -MF CMakeFiles/Thread_manager_dev.dir/main.cpp.o.d -o CMakeFiles/Thread_manager_dev.dir/main.cpp.o -c /home/adam/Projects/Threads/Threads_Manager/main.cpp
 
 CMakeFiles/Thread_manager_dev.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Thread_manager_dev.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Projects/Threads/Threads_Manager/main.cpp > CMakeFiles/Thread_manager_dev.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Projects/Threads/Threads_Manager/main.cpp > CMakeFiles/Thread_manager_dev.dir/main.cpp.i
 
 CMakeFiles/Thread_manager_dev.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Thread_manager_dev.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Projects/Threads/Threads_Manager/main.cpp -o CMakeFiles/Thread_manager_dev.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Projects/Threads/Threads_Manager/main.cpp -o CMakeFiles/Thread_manager_dev.dir/main.cpp.s
 
 CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o: CMakeFiles/Thread_manager_dev.dir/flags.make
 CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o: ../Task_Manager.cpp
 CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o: CMakeFiles/Thread_manager_dev.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o -MF CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o.d -o CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o -c /home/adam/Projects/Threads/Threads_Manager/Task_Manager.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o -MF CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o.d -o CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o -c /home/adam/Projects/Threads/Threads_Manager/Task_Manager.cpp
 
 CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Projects/Threads/Threads_Manager/Task_Manager.cpp > CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Projects/Threads/Threads_Manager/Task_Manager.cpp > CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.i
 
 CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Projects/Threads/Threads_Manager/Task_Manager.cpp -o CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Projects/Threads/Threads_Manager/Task_Manager.cpp -o CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.s
 
 # Object files for target Thread_manager_dev
 Thread_manager_dev_OBJECTS = \
@@ -108,6 +108,21 @@ Thread_manager_dev_EXTERNAL_OBJECTS =
 Thread_manager_dev: CMakeFiles/Thread_manager_dev.dir/main.cpp.o
 Thread_manager_dev: CMakeFiles/Thread_manager_dev.dir/Task_Manager.cpp.o
 Thread_manager_dev: CMakeFiles/Thread_manager_dev.dir/build.make
+Thread_manager_dev: /usr/local/lib/libopencv_gapi.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_highgui.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_ml.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_objdetect.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_photo.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_stitching.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_video.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_videoio.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_imgcodecs.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_dnn.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_calib3d.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_features2d.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_flann.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_imgproc.so.4.6.0
+Thread_manager_dev: /usr/local/lib/libopencv_core.so.4.6.0
 Thread_manager_dev: CMakeFiles/Thread_manager_dev.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/adam/Projects/Threads/Threads_Manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Thread_manager_dev"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Thread_manager_dev.dir/link.txt --verbose=$(VERBOSE)
