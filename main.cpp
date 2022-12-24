@@ -22,10 +22,9 @@ TickMeter Benchmark;
 Tasking::Task::Task_State Assigment(input_images input)
 {
     Mat tmp;
-    for (int i = 1; i < 2; i = i + 2)
+    for (int i = 1; i < 500; i = i + 2)
     {
         blur(input.my_part, tmp, Size( i, i ), Point(-1,-1) );
-        //tmp = input.my_part;
     }
     std::lock_guard<std::mutex> guard(output_mutex);
     output_images out{tmp, input.order};
@@ -60,18 +59,18 @@ int main(int, char **)
     Threads_Execution.stop();
     cout << "Total time of threads execution: " << Threads_Execution.getTimeSec() << endl;
     //show processed image.
-    imshow("Display window0", Process_Image(output));
+    imshow("Multithreading", Process_Image(output));
     Whole_Program.stop();
     cout << "Total time of program execution: " << Whole_Program.getTimeSec() << endl;
     cout << "Percentage of time spendt on threads execution: " << (Threads_Execution.getTimeSec()/Whole_Program.getTimeSec())*100.0 << "%" << endl;
-    waitKey(0);
-
-    string image_path = samples::findFile("/home/adam/Projects/Threads_Manager/lenna.jpg");
-    Mat img = imread(image_path, IMREAD_COLOR);
 
     Benchmark.start();
-    imshow("Display window1", One_Thread_Benchmark(img));
+    string image_path = samples::findFile("/home/adam/Projects/Threads_Manager/lenna.jpg");
+    Mat img = imread(image_path, IMREAD_COLOR);
+    resize(img, img, Size((1034/2.1), 1024), INTER_LINEAR);
+    imshow("Onethread", One_Thread_Benchmark(img));
     Benchmark.stop();
+    
     cout << "Total time of one thread execution: " << Benchmark.getTimeSec() << endl;
     if(Benchmark.getTimeSec() - Whole_Program.getTimeSec() > 0)
     {

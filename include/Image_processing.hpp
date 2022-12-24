@@ -20,6 +20,7 @@ divided_image Read_image(string file_name, int blocks)
 {
     string image_path = samples::findFile("/home/adam/Projects/Threads_Manager/" + file_name);
     Mat img = imread(image_path, IMREAD_COLOR);
+    resize(img, img, Size((1034/2.1), 1024), INTER_LINEAR);
     divided_image divided_images = divide_image(img, blocks);
     return divided_images;
 }
@@ -95,15 +96,15 @@ Mat Process_Image(processed_image output)
     //napisać funckję do łączenia bloków w image.
     Mat Image2;
     hconcat(maty[0], maty[1], Image2);
-    resize(Image2, Image2, Size((1034/2.1), 1024), INTER_LINEAR);
+    //resize(Image2, Image2, Size((1034/2.1), 1024), INTER_LINEAR);
     return Image2;
 }
 Mat One_Thread_Benchmark(Mat Image)
 {
-    for (int i = 1; i < 2; i = i + 2)
+    Mat tmp;
+    for (int i = 1; i < 500; i = i + 2)
     {
-        blur(Image, Image, Size( i, i ), Point(-1,-1) );
+        blur(Image, tmp, Size( i, i ), Point(-1,-1) );
     }
-    resize(Image, Image, Size((1034/2.1), 1024), INTER_LINEAR);
-    return Image;
+    return tmp;
 }
