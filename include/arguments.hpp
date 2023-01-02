@@ -9,12 +9,14 @@ using namespace cv;
 
 struct input_images{
     Mat my_part;
-    int order;
+    int x;
+    int y;
 }; 
 
 struct output_images{
     Mat my_part;
-    int order;
+    int x;
+    int y;
 };
 
 bool compareOrder(output_images i1, output_images i2);

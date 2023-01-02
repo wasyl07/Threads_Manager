@@ -57,3 +57,38 @@ Task_Handler::Operation_State Task_Handler::End_Tasks()
     }
     return Task_Handler::Operation_State::OK;
 }
+Task_Handler::Operation_State Task_Handler::Purge()
+{
+    active_tasks.clear();
+    return Task_Handler::Operation_State::OK;
+}
+
+Task_Handler::Operation_State Task::start()
+{
+    t = new std::thread(ptr, input);
+    state = IN_PROGRESS;
+    std::cout << "Task id:" << id << " State:" << state << std::endl;
+    return Task_Handler::Operation_State::OK; 
+}
+Task::Task_State Task::join()
+{
+    t->join();
+    t = nullptr;
+    return Task_State::COMPLETED;
+}
+bool Task::Is_Task_Running() 
+{
+    try{
+        if(Return_thread())
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+    catch(std::runtime_error &e)
+    {
+        return 0;
+    }
+}

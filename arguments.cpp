@@ -2,5 +2,5 @@
 
 bool compareOrder(output_images i1, output_images i2)
 {
-    return (i1.order < i2.order);
+    return (i1.x < i2.x);
 }

@@ -3,14 +3,11 @@
 #include <thread>
 #include <iostream>
 #include <future>
-
 #include "arguments.hpp"
 
 namespace Tasking
 {
-    //forward declaration.
     class Task;
-    //Class to store and handle tasks created by user.
     class Task_Handler {
         private:
 
@@ -25,11 +22,9 @@ namespace Tasking
                 FAIL,
                 DEFAULT
             };
-
-        int add_task(Task *newtask);
-
         std::vector<Task*> active_tasks;
 
+        int add_task(Task *newtask);
         Operation_State pause_task(Task);
         Operation_State resume_task(Task);
         Operation_State delete_task(Task);
@@ -39,6 +34,7 @@ namespace Tasking
         Operation_State End_Tasks();
         Operation_State Start_all_Tasks();
         Operation_State Show_active_tasks();
+        Operation_State Purge();
 
         void FIFO_Algorithm();
         void Spin_lock();
@@ -53,53 +49,25 @@ namespace Tasking
                 PAUSED,
                 COMPLETED,
                 DEFAULT
-            };
-
+            }state;
         private:
             int id;
             input_images input;
             Task_State(*ptr)(input_images);
+            Task_State(*ptr_void)(void*);
             std::thread *t;
             bool is_task_running;
-
         public:
-
+            std::thread* Return_thread() {return t;}
+            //Constructor for image processing.
             Task(Task_State(*fun_ptr)(input_images), input_images arg);  
-
-            Task_State state = Task_State::DEFAULT;
-
-            Task_Handler::Operation_State start()
-            {
-                t = new std::thread(ptr, input);
-                state = IN_PROGRESS;
-                std::cout << "Task id:" << id << " State:" << state << std::endl;
-                return Task_Handler::Operation_State::OK; 
-            }
-            Task_State join()
-            {
-                t->join();
-                t = nullptr;
-                return Task_State::COMPLETED;
-            }
-
+            //Default constructor.
+            Task(Task_State(*fun_ptr)(void), void* arg);  
+            Task_Handler::Operation_State start();
+            Task_State join();
             Task_State return_state() {return state;}
             int return_id() {return id;}
             void Show_Task_Info();
-            bool Is_Task_Running() 
-            {
-                try{
-                    if(t)
-                    {
-                        return true;
-                    }else
-                    {
-                        return false;
-                    }
-                }
-                catch(std::runtime_error &e)
-                {
-                    return 0;
-                }
-            }
+            bool Is_Task_Running() ;
     }; 
 }
