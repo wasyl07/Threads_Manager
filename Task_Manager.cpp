@@ -17,7 +17,7 @@ Task_Handler::Operation_State Task_Handler::Start_all_Tasks()
 {
     for(Task *t : Handler1.active_tasks)
     {
-        t->start();
+        t->Start_Task();
     }
 
     return Task_Handler::Operation_State::OK;
@@ -68,7 +68,6 @@ void Task_Handler::FIFO_Algorithm()
     if(active_tasks.size() != 0)
     {
         cout << "Number of active tasks: " << active_tasks.size() << endl;
-        active_tasks.back()->start();
         //active_tasks.back()->t->detach();
         //active_tasks.pop_back();
     }

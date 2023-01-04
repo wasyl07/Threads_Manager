@@ -72,6 +72,7 @@ namespace Tasking
             Task_State join();
             void Show_Task_Info();
             bool Is_Task_Running();
+            void Start_Task();
             template <typename Function, typename Argument>
             void Execute_Task(Function func, Argument arg);
 

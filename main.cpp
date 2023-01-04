@@ -10,18 +10,29 @@
 using namespace std;
 
 Tasking::Task_Handler Handler1;
-arguments args;
+arguments args_global;
 
-Tasking::Task::Task_State Generate_Data(arguments args)
+Tasking::Task::Task_State Read_Data(arguments args)
 {
     cout << "Generate_Data -> " << args.x << endl;
+    return Tasking::Task::Task_State::COMPLETED;
+}
+Tasking::Task::Task_State Modify_Data(arguments args)
+{
+    args_global.x = 3;
     return Tasking::Task::Task_State::COMPLETED;
 }
 
 int main(int, char **)
 {  
-    args.x = 2;
-    Tasking::Task New_Task(&Generate_Data, args ,true);
-    New_Task.join();
+    args_global.x = 2;
+    Tasking::Task ReadTask(&Read_Data, args_global ,true);
+    Tasking::Task WriteTask(&Modify_Data, args_global ,true);
+    Tasking::Task ReadTask2(&Read_Data, args_global ,true);
+
+    Handler1.Start_all_Tasks();
+
+    Handler1.End_Tasks();
+
     return 0;
 }

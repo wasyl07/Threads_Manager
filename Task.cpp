@@ -15,6 +15,10 @@ Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
         this->Execute_Task(fun_ptr, arg);
     }
 }
+void Tasking::Task::Start_Task()
+{
+    Execute_Task(ptr_arguments, args);
+}
 
 Task::Task_State Task::join()
 {
