@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include <thread>
 #include <iostream>
@@ -10,8 +11,9 @@ namespace Tasking
     class Task;
     class Task_Handler {
         private:
-
+            std::mutex Handler_mutex;
         public:
+
         Task_Handler()
         {
             std::cout<< "Task handler online!"<<std::endl;
@@ -22,9 +24,11 @@ namespace Tasking
                 FAIL,
                 DEFAULT
             };
+
         std::vector<Task*> active_tasks;
 
         int add_task(Task *newtask);
+
         Operation_State pause_task(Task);
         Operation_State resume_task(Task);
         Operation_State delete_task(Task);
@@ -41,8 +45,7 @@ namespace Tasking
         void FIFO_Algorithm();
         void Spin_lock();
 
-        //template<typename Function>
-        //void Process_Data(Function func);
+        void Lock_Mutex(){std::lock_guard<std::mutex> guard(Handler_mutex);}
     };
 
     class Task{
@@ -56,31 +59,28 @@ namespace Tasking
                 COMPLETED,
                 DEFAULT
             }state;
-            std::thread *t;
         private:
-
             int id;
-            input_images input;
-            arguments args;
             bool run;
-            Task_State(*ptr)(input_images);
-            Task_State(*ptr_arguments)(arguments);
-            Task_State(*ptr_bool)();
-            Task_State(*ptr_void)();
             bool is_task_running;
-
+            std::thread *t;
+            arguments args;
+            Task_State(*ptr_arguments)(arguments);
         public:
-            std::thread* Return_thread() {return t;}
-            //Constructors
-            Task(Task_State(*fun_ptr)(input_images), input_images arg);  
-            Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go);  
-            Task(Task_State(*fun_ptr)());  
-            Task(Task_State(*fun_ptr)()        ,bool go);  
-            Task_Handler::Operation_State start();
+            //Constructor
+            Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go);   
             Task_State join();
+            void Show_Task_Info();
+            bool Is_Task_Running();
+            template <typename Function, typename Argument>
+            void Execute_Task(Function func, Argument arg);
+
             Task_State return_state() {return state;}
             int return_id() {return id;}
-            void Show_Task_Info();
-            bool Is_Task_Running() ;
-    }; 
+            std::thread::id return_thread_id() {return t->get_id();}
+        private:
+            std::thread* Return_thread() {return t;}
+    };
+
+    
 }

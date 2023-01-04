@@ -7,52 +7,11 @@ using namespace std;
 
 extern Task_Handler Handler1;
 
-Tasking::Task::Task(Task_State(*fun_ptr)(input_images), input_images arg)
-{
-    ptr = fun_ptr;
-    input = arg;
-    id = Handler1.add_task(this);
-    Task::state = CREATED;
-
-    Show_Task_Info();
-}
-Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
-{
-    ptr_arguments = fun_ptr;
-    args = arg;
-    id = Handler1.add_task(this);
-    if(go == true)
-    {
-        this->start();
-    }
-}
-Tasking::Task::Task(Task_State(*fun_ptr)(), bool go)
-{
-    ptr_bool = fun_ptr;
-    run = go;
-    id = Handler1.add_task(this);
-    if(go == true)
-    {
-        this->start();
-    }
-}
-
-Tasking::Task::Task(Task_State(*fun_ptr)())
-{
-
-
-}
-
 int Tasking::Task_Handler::add_task(Task *newtask)
 {
     Handler1.active_tasks.push_back(newtask);
     cout << "Task: " << active_tasks.size() << " added" << endl;
     return active_tasks.size();
-}
-void Tasking::Task::Show_Task_Info()
-{
-    cout << "Task number: " << id << " State:" 
-    << state << " Thread id:" << t->get_id() << " Is task running?: " << Is_Task_Running() << endl;
 }
 Task_Handler::Operation_State Task_Handler::Start_all_Tasks()
 {
@@ -94,44 +53,16 @@ Task_Handler::Operation_State Task_Handler::Print_Threads_ID()
 {
     for(Task *task : Handler1.active_tasks)
     {
-        cout << "Task thread id: " << task->t->get_id() << endl;
+        cout << "Task thread id: " << task->return_thread_id() << endl;
     }   
     return Task_Handler::Operation_State::OK;
 }
 
-Task_Handler::Operation_State Task::start()
-{
-    t = new std::thread(ptr_bool);
-    state = IN_PROGRESS;
-    std::cout << "Task id:" << id << " State:" << state << std::endl;
-    return Task_Handler::Operation_State::OK; 
-}
 int Task_Handler::get_number_of_tasks()
 {
     return active_tasks.size();
 }
-Task::Task_State Task::join()
-{
-    t->join();
-    t = nullptr;
-    return Task_State::COMPLETED;
-}
-bool Task::Is_Task_Running() 
-{
-    try{
-        if(Return_thread())
-        {
-            return true;
-        }else
-        {
-            return false;
-        }
-    }
-    catch(std::runtime_error &e)
-    {
-        return 0;
-    }
-}
+
 void Task_Handler::FIFO_Algorithm()
 {
     if(active_tasks.size() != 0)
