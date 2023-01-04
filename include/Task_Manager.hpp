@@ -29,17 +29,20 @@ namespace Tasking
         Operation_State resume_task(Task);
         Operation_State delete_task(Task);
         Operation_State get_task_state(Task);
-        Operation_State get_task_progress(Task);
 
         int get_number_of_tasks();
 
         Operation_State End_Tasks();
         Operation_State Start_all_Tasks();
         Operation_State Show_active_tasks();
+        Operation_State Print_Threads_ID();
         Operation_State Purge();
 
         void FIFO_Algorithm();
         void Spin_lock();
+
+        //template<typename Function>
+        //void Process_Data(Function func);
     };
 
     class Task{

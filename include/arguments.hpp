@@ -4,8 +4,10 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/core/utility.hpp>
-
 #include <vector>
+#include <thread>
+#include <iostream>
+#include <future>
 
 using namespace cv;
 

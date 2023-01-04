@@ -52,7 +52,7 @@ int Tasking::Task_Handler::add_task(Task *newtask)
 void Tasking::Task::Show_Task_Info()
 {
     cout << "Task number: " << id << " State:" 
-    << state << " this:" << this << " Is task running?: " << Is_Task_Running() << endl;
+    << state << " Thread id:" << t->get_id() << " Is task running?: " << Is_Task_Running() << endl;
 }
 Task_Handler::Operation_State Task_Handler::Start_all_Tasks()
 {
@@ -83,21 +83,19 @@ Task_Handler::Operation_State Task_Handler::End_Tasks()
             active_tasks.erase(it);
         }
     }
-    /*
-    for(Task *t : Handler1.active_tasks)
-    {
-        if(t->Is_Task_Running() == true)
-        {
-            t->join();
-            t->state = Task::Task_State::COMPLETED;   
-        }
-    }
-    */
     return Task_Handler::Operation_State::OK;
 }
 Task_Handler::Operation_State Task_Handler::Purge()
 {
     active_tasks.clear();
+    return Task_Handler::Operation_State::OK;
+}
+Task_Handler::Operation_State Task_Handler::Print_Threads_ID()
+{
+    for(Task *task : Handler1.active_tasks)
+    {
+        cout << "Task thread id: " << task->t->get_id() << endl;
+    }   
     return Task_Handler::Operation_State::OK;
 }
 

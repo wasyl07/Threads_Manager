@@ -7,8 +7,6 @@
 #include <fstream>
 #include <random>
 
-#include <boost/crc.hpp>
-
 using namespace std;
 
 Tasking::Task_Handler Handler1;
@@ -21,8 +19,8 @@ std::mutex mutex_lock;
 double l1 = 0;
 double l2 = 100;
 
-std::uniform_real_distribution<double> unif(l1, l2);
-std::default_random_engine re;
+uniform_real_distribution<double> unif(l1, l2);
+default_random_engine re;
 
 Tasking::Task::Task_State Generate_Data()
 {
@@ -77,11 +75,12 @@ int main(int, char **)
             Tasking::Task *calculate = new Tasking::Task(&Calculate ,true);
         }
     }
-    //Handler1.End_Tasks();
+    Handler1.Print_Threads_ID();
+    Handler1.End_Tasks();
     for(int i = 0; i<args.output.size(); i++)
     {
         cout << i <<". mean value = " << args.output[i] << endl;
     }
-    cout << Handler1.get_number_of_tasks();
+    cout << Handler1.get_number_of_tasks() << endl;
     return 0;
 }
