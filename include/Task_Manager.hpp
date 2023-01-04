@@ -18,7 +18,7 @@ namespace Tasking
         {
             std::cout<< "Task handler online!"<<std::endl;
         }
-
+        
         enum class Operation_State{
                 OK,
                 FAIL,
@@ -67,19 +67,23 @@ namespace Tasking
             arguments args;
             Task_State(*ptr_arguments)(arguments);
         public:
-            //Constructor
-            Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go);   
+            //Konstruktor
+            Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go);  
+            //Metody do rozpoczynania i kończenia pracy wątków.
+            void Start_Task();
             Task_State join();
+            //Metody pokazujące dane i stan obiektów task.
             void Show_Task_Info();
             bool Is_Task_Running();
-            void Start_Task();
-            template <typename Function, typename Argument>
-            void Execute_Task(Function func, Argument arg);
-
+            //Metody zwracające dane na temat obiektu Task.
             Task_State return_state() {return state;}
             int return_id() {return id;}
             std::thread::id return_thread_id() {return t->get_id();}
         private:
+            //Metoda tworząca obiekt std::thread.
+            template <typename Function, typename Argument>
+            void Execute_Task(Function func, Argument arg);
+            //Metoda zwracająca wskaźnik do obiektu std::thread.
             std::thread* Return_thread() {return t;}
     };
 

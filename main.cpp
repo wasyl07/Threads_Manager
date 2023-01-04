@@ -14,23 +14,23 @@ arguments args_global;
 
 Tasking::Task::Task_State Read_Data(arguments args)
 {
-    cout << "Generate_Data -> " << args.x << endl;
+    cout << "Generate_Data -> " << args_global.x << endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     return Tasking::Task::Task_State::COMPLETED;
 }
+
 Tasking::Task::Task_State Modify_Data(arguments args)
 {
-    args_global.x = 3;
+    args_global.x = rand()%99 + 1;
     return Tasking::Task::Task_State::COMPLETED;
 }
 
 int main(int, char **)
 {  
     args_global.x = 2;
+ 
     Tasking::Task ReadTask(&Read_Data, args_global ,true);
     Tasking::Task WriteTask(&Modify_Data, args_global ,true);
-    Tasking::Task ReadTask2(&Read_Data, args_global ,true);
-
-    Handler1.Start_all_Tasks();
 
     Handler1.End_Tasks();
 
