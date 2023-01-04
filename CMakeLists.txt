@@ -7,7 +7,7 @@ enable_testing()
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-add_executable(Thread_manager_dev main.cpp Task_Manager.cpp Image_processing.cpp arguments.cpp)
+add_executable(Thread_manager_dev main.cpp Task_Manager.cpp arguments.cpp)
 
 target_link_libraries( Thread_manager_dev ${OpenCV_LIBS} )
 

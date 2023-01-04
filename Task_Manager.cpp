@@ -16,6 +16,33 @@ Tasking::Task::Task(Task_State(*fun_ptr)(input_images), input_images arg)
 
     Show_Task_Info();
 }
+Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
+{
+    ptr_arguments = fun_ptr;
+    args = arg;
+    id = Handler1.add_task(this);
+    if(go == true)
+    {
+        this->start();
+    }
+}
+Tasking::Task::Task(Task_State(*fun_ptr)(), bool go)
+{
+    ptr_bool = fun_ptr;
+    run = go;
+    id = Handler1.add_task(this);
+    if(go == true)
+    {
+        this->start();
+    }
+}
+
+Tasking::Task::Task(Task_State(*fun_ptr)())
+{
+
+
+}
+
 int Tasking::Task_Handler::add_task(Task *newtask)
 {
     Handler1.active_tasks.push_back(newtask);
@@ -47,14 +74,25 @@ Task_Handler::Operation_State Task_Handler::Show_active_tasks()
 
 Task_Handler::Operation_State Task_Handler::End_Tasks()
 {
+    for (std::vector<Task*>::iterator it = active_tasks.begin(); it != active_tasks.end();)
+    {
+        if((*it)->Is_Task_Running() == true)
+        {
+            (*it)->join();
+            (*it)->state = Task::Task_State::COMPLETED;  
+            active_tasks.erase(it);
+        }
+    }
+    /*
     for(Task *t : Handler1.active_tasks)
     {
-        t->join();
-        t->state = Task::Task_State::COMPLETED;
-        //Handler1.active_tasks.erase(active_tasks.begin());
-        //delete t;
-     
+        if(t->Is_Task_Running() == true)
+        {
+            t->join();
+            t->state = Task::Task_State::COMPLETED;   
+        }
     }
+    */
     return Task_Handler::Operation_State::OK;
 }
 Task_Handler::Operation_State Task_Handler::Purge()
@@ -65,10 +103,14 @@ Task_Handler::Operation_State Task_Handler::Purge()
 
 Task_Handler::Operation_State Task::start()
 {
-    t = new std::thread(ptr, input);
+    t = new std::thread(ptr_bool);
     state = IN_PROGRESS;
     std::cout << "Task id:" << id << " State:" << state << std::endl;
     return Task_Handler::Operation_State::OK; 
+}
+int Task_Handler::get_number_of_tasks()
+{
+    return active_tasks.size();
 }
 Task::Task_State Task::join()
 {
@@ -90,5 +132,15 @@ bool Task::Is_Task_Running()
     catch(std::runtime_error &e)
     {
         return 0;
+    }
+}
+void Task_Handler::FIFO_Algorithm()
+{
+    if(active_tasks.size() != 0)
+    {
+        cout << "Number of active tasks: " << active_tasks.size() << endl;
+        active_tasks.back()->start();
+        //active_tasks.back()->t->detach();
+        //active_tasks.pop_back();
     }
 }

@@ -31,6 +31,8 @@ namespace Tasking
         Operation_State get_task_state(Task);
         Operation_State get_task_progress(Task);
 
+        int get_number_of_tasks();
+
         Operation_State End_Tasks();
         Operation_State Start_all_Tasks();
         Operation_State Show_active_tasks();
@@ -42,6 +44,7 @@ namespace Tasking
 
     class Task{
         public:
+
               enum Task_State{
                 CREATED,
                 FAIL,
@@ -50,19 +53,26 @@ namespace Tasking
                 COMPLETED,
                 DEFAULT
             }state;
+            std::thread *t;
         private:
+
             int id;
             input_images input;
+            arguments args;
+            bool run;
             Task_State(*ptr)(input_images);
-            Task_State(*ptr_void)(void*);
-            std::thread *t;
+            Task_State(*ptr_arguments)(arguments);
+            Task_State(*ptr_bool)();
+            Task_State(*ptr_void)();
             bool is_task_running;
+
         public:
             std::thread* Return_thread() {return t;}
-            //Constructor for image processing.
+            //Constructors
             Task(Task_State(*fun_ptr)(input_images), input_images arg);  
-            //Default constructor.
-            Task(Task_State(*fun_ptr)(void), void* arg);  
+            Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go);  
+            Task(Task_State(*fun_ptr)());  
+            Task(Task_State(*fun_ptr)()        ,bool go);  
             Task_Handler::Operation_State start();
             Task_State join();
             Task_State return_state() {return state;}
