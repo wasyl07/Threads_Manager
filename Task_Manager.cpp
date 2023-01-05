@@ -8,13 +8,12 @@ using namespace std;
 extern Task_Handler Handler1;
 
 /**
- * Konstruktor o.
+ * Dodaj do vectora.
  *
- * This sum is the arithmetic sum, not some other kind of sum that only
- * mathematicians have heard of.
+ * Metoda dodaje nowo utworzony obiekt Task do vectora active_tasks.
  *
- * @param values Container whose values are summed.
- * @return sum of `values`, or 0.0 if `values` is empty.
+ * @param newtask Wskaźnik do obiektu Task.
+ * @return Liczbę obiektów w wektorze.
  */
 int Tasking::Task_Handler::add_task(Task *newtask)
 {
@@ -23,14 +22,12 @@ int Tasking::Task_Handler::add_task(Task *newtask)
     return active_tasks.size();
 }
 /**
- * Konstruktor obiektu Task.
+ * Rozpocznij pracę.
  *
- * Tworzy nowy obiekt o typie Task.
+ * Metoda uruchamia pracę wszystkich wątków w vectorze.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
  */
 Task_Handler::Operation_State Task_Handler::Start_all_Tasks()
 {
@@ -42,14 +39,12 @@ Task_Handler::Operation_State Task_Handler::Start_all_Tasks()
     return Task_Handler::Operation_State::OK;
 }
 /**
- * Konstruktor obiektu Task.
+ * Pokaż informacje
  *
- * Tworzy nowy obiekt o typie Task.
+ * Wypisuje informacje o aktualnie stworzonych obiektach Task.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
  */
 Task_Handler::Operation_State Task_Handler::Show_active_tasks()
 {
@@ -60,14 +55,12 @@ Task_Handler::Operation_State Task_Handler::Show_active_tasks()
     return Task_Handler::Operation_State::OK;
 }
 /**
- * Konstruktor obiektu Task.
+ * Zakończ pracę
  *
- * Tworzy nowy obiekt o typie Task.
- *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * Kończy prace wszystkich wątków w vectorze.
+ * 
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
  */
 Task_Handler::Operation_State Task_Handler::End_Tasks()
 {
@@ -83,14 +76,12 @@ Task_Handler::Operation_State Task_Handler::End_Tasks()
     return Task_Handler::Operation_State::OK;
 }
 /**
- * Konstruktor obiektu Task.
+ * Usuń obiekty
  *
- * Tworzy nowy obiekt o typie Task.
+ * Usuwa wszystkie obiekty Task z vectora.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
  * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
  */
 Task_Handler::Operation_State Task_Handler::Purge()
 {
@@ -98,14 +89,12 @@ Task_Handler::Operation_State Task_Handler::Purge()
     return Task_Handler::Operation_State::OK;
 }
 /**
- * Konstruktor obiektu Task.
+ * Pokaż ID
  *
- * Tworzy nowy obiekt o typie Task.
+ * Wypisuje identyfikatory pracujących wątków.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
  */
 Task_Handler::Operation_State Task_Handler::Print_Threads_ID()
 {
@@ -116,14 +105,10 @@ Task_Handler::Operation_State Task_Handler::Print_Threads_ID()
     return Task_Handler::Operation_State::OK;
 }
 /**
- * Konstruktor obiektu Task.
+ * Metoda pokazuje liczbę aktualnie utworzonych obiektów Task.
  *
- * Tworzy nowy obiekt o typie Task.
- *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param  none
+ * @return Liczba obiektów Task.
  */
 int Task_Handler::get_number_of_tasks()
 {

@@ -24,46 +24,42 @@ Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
     {
         this->Execute_Task(ptr_arguments, args);
     }
+    state = CREATED;
 }
 /**
- * Konstruktor obiektu Task.
+ * Rozpocznij pracę
  *
- * Tworzy nowy obiekt o typie Task.
+ * Metoda ta rozpoczyna prace wątku.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param none
+ * @return none
  */
 void Tasking::Task::Start_Task()
 {
     Execute_Task(ptr_arguments, args);
 }
 /**
- * Konstruktor obiektu Task.
+ * Zakończ wątek.
  *
- * Tworzy nowy obiekt o typie Task.
+ * Metoda ta kończy pracę wątku.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
+ * @param  none
  * @return Stan obiektu Task.
  */
 Task::Task_State Task::join()
 {
     t->join();
     t = nullptr;
-    return Task_State::COMPLETED;
+    state = COMPLETED;
+    return state;
 }
 /**
- * Konstruktor obiektu Task.
+ * Pokaż informacje o wątku
  *
- * Tworzy nowy obiekt o typie Task.
+ * Metoda wypisuje atrybuty wątku takie jak: Numer, stan, identyfikator wątku oraz czy wątek pracuje.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param none
+ * @return none
  */
 void Tasking::Task::Show_Task_Info()
 {
@@ -75,14 +71,10 @@ void Tasking::Task::Show_Task_Info()
     << endl;
 }
 /**
- * Konstruktor obiektu Task.
+ * Metoda informuje o tym czy wątek pracuje.
  *
- * Tworzy nowy obiekt o typie Task.
- *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
- * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @param  none
+ * @return true jeśli pracuje, false jeśli nie.
  */
 bool Task::Is_Task_Running() 
 {
@@ -101,14 +93,13 @@ bool Task::Is_Task_Running()
     }
 }
 /**
- * Konstruktor obiektu Task.
+ * Wykonaj zadanie.
  *
- * Tworzy nowy obiekt o typie Task.
+ * Metoda ta powołuje do życia wątek std::thread, co rozpoczyna jego pracę oraz blokuje mutex.
  *
- * @param  fun_ptr Wskaźnik do funkcji która będzie wykonywana przez wątek.
+ * @param  func Wskaźnik do funkcji która będzie wykonywana przez wątek.
  * @param  arg Argumenty przekazywane do wątku.
- * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
- * @return Stan obiektu Task.
+ * @return none
  */
 template <typename Function, typename Argument>
 void Task::Execute_Task(Function func, Argument arg)
