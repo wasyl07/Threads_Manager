@@ -22,7 +22,8 @@ namespace Tasking
         enum class Operation_State{
                 OK,
                 FAIL,
-                DEFAULT
+                DEFAULT,
+                UNDEFINED
             };
 
         std::vector<Task*> active_tasks;

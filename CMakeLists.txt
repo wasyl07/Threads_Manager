@@ -1,16 +1,26 @@
 cmake_minimum_required(VERSION 3.0.0)
+
 project(Thread_manager_dev VERSION 0.1.0)
 
-include(CTest)
-enable_testing()
+set(CMAKE_CXX_STANDARD 11)
 
-find_package( OpenCV REQUIRED )
-include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_executable(Thread_manager_dev src/main.cpp src/Task_Manager.cpp  src/Task.cpp)
+add_library(${PROJECT_NAME} STATIC
+    source/Task.cpp
+    source/Task_Manager.cpp
+    source/Task_Manager.hpp
+    source/arguments.hpp
+)
 
-target_link_libraries( Thread_manager_dev ${OpenCV_LIBS} )
+set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER include/Tasking.hpp)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+include(GNUInstallDirs)
+
+install(TARGETS ${PROJECT_NAME}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+install(FILES include/Tasking.hpp source/Task_Manager.hpp source/arguments.hpp DESTINATION include)
