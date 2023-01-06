@@ -86,6 +86,4 @@ namespace Tasking
             //Metoda zwracająca wskaźnik do obiektu std::thread.
             std::thread* Return_thread() {return t;}
     };
-
-    
 }
