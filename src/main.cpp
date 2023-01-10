@@ -7,6 +7,8 @@
 #include <fstream>
 #include <random>
 
+//Dodać kolejkę tasków do wykonania, i możliwość ograniczenia wykonywanych tasków naraz.
+
 using namespace std;
 
 Tasking::Task_Handler Handler1;
@@ -22,17 +24,26 @@ Tasking::Task::Task_State Read_Data(arguments args)
 Tasking::Task::Task_State Modify_Data(arguments args)
 {
     args_global.x = rand()%99 + 1;
+    cout << "Modify_Data ->" << args_global.x << endl;
     return Tasking::Task::Task_State::COMPLETED;
 }
 
 int main(int, char **)
 {  
-    args_global.x = 2;
- 
-    Tasking::Task ReadTask(&Read_Data, args_global ,true);
-    Tasking::Task WriteTask(&Modify_Data, args_global ,true);
+    Tasking::Task ReadTask(&Read_Data, args_global ,false);
+    //Tasking::Task WriteTask(&Modify_Data, args_global ,false);
 
-    Handler1.End_Tasks();
+    //ReadTask.Set_Task_As_Cyclic(1000);
+    //WriteTask.Set_Task_As_Cyclic(1000);
+
+    ReadTask.Start_Task();
+
+    cout << ReadTask.return_state() << endl;
+
+    ReadTask.join();
+
+    //Handler1.Cycle_Tasks();
+    //while(true){}
 
     return 0;
 }

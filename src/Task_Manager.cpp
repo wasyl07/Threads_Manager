@@ -76,6 +76,26 @@ Task_Handler::Operation_State Task_Handler::End_Tasks()
     return Task_Handler::Operation_State::OK;
 }
 /**
+ * Zakończ pracę
+ *
+ * Kończy prace wszystkich wątków w vectorze.
+ * 
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
+ */
+Task_Handler::Operation_State Task_Handler::Spin_Tasks()
+{
+    for (std::vector<Task*>::iterator it = active_tasks.begin(); it != active_tasks.end(); it++)
+    {
+        if((*it)->Is_Task_Running() == true)
+        {
+            (*it)->join();
+            (*it)->state = Task::Task_State::COMPLETED;  
+        }
+    }
+    return Task_Handler::Operation_State::OK;
+}
+/**
  * Usuń obiekty
  *
  * Usuwa wszystkie obiekty Task z vectora.
@@ -124,10 +144,44 @@ int Task_Handler::get_number_of_tasks()
  * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
  * @return Stan obiektu Task.
  */
+/**
+ * Wykonaj cyklicznie
+ *
+ * Metoda przegląda zadania w wektorze active_tasks, i wykonuje te które są ozanczone jako okresowe.
+ *
+ * @param  none 
+ * @return none
+ */
+void Task_Handler::Cycle_Tasks()
+{
+    manage_cyclic_tasks = new std::thread(&Task_Handler::Spin, this);
+}
 void Task_Handler::FIFO_Algorithm()
 {
     if(active_tasks.size() != 0)
     {
         cout << "Number of active tasks: " << active_tasks.size() << endl;
     }
+}
+/**
+ * Wykonaj cyklicznie
+ *
+ * Metoda przegląda zadania w wektorze active_tasks, i wykonuje te które są ozanczone jako okresowe.
+ *
+ * @param  none 
+ * @return none
+ */
+void Task_Handler::Spin()
+{
+    do{ 
+        for(Task* t : active_tasks)
+        {
+            if(t->return_cyclic())
+            {
+                t->Try_Start();
+            }
+        }
+        Spin_Tasks();
+    }
+    while(true);
 }
