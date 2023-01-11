@@ -22,6 +22,9 @@ namespace Tasking
         private:
             std::mutex Handler_mutex;
             std::thread *manage_cyclic_tasks;
+            std::thread *manage_FIFO_queue;
+            int max_number_of_threads;
+            bool FIFO_Mode = false;
         public:
 
         Task_Handler()
@@ -30,14 +33,19 @@ namespace Tasking
         }
         
         enum class Operation_State{
-                OK,
-                FAIL,
-                DEFAULT
-            };
-
+            OK,
+            FAIL,
+            DEFAULT
+        };
+        struct signals{
+            int  thread_id;
+            bool thread_ended;
+        };
         std::vector<Task*> active_tasks;
+        std::vector<Task*> queue;
 
         int add_task(Task *newtask);
+        Operation_State Resolve_thread_anonymity(std::thread::id _id);
 
         Operation_State pause_task(Task);
         Operation_State resume_task(Task);
@@ -52,6 +60,7 @@ namespace Tasking
         Operation_State Show_active_tasks();
         Operation_State Print_Threads_ID();
         Operation_State Purge();
+        Operation_State Select_FIFO(int num_of_threads);
 
         void Cycle_Tasks();
         void FIFO_Algorithm();
