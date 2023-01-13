@@ -20,11 +20,11 @@ Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
     ptr_arguments = fun_ptr;
     args = arg;
     id = Handler1.add_task(this);
+    state = CREATED;
     if(go == true)
     {
         this->Execute_Task(ptr_arguments, args);
     }
-    state = CREATED;
 }
 /**
  * Rozpocznij pracę
@@ -36,6 +36,7 @@ Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
  */
 void Tasking::Task::Start_Task()
 {
+    is_task_running = true;
     Execute_Task(ptr_arguments, args);
 }
 /**
@@ -48,10 +49,33 @@ void Tasking::Task::Start_Task()
  */
 Task::Task_State Task::join()
 {
-    t->join();
-    t = nullptr;
-    state = COMPLETED;
+    if(t != nullptr && (*t).joinable())
+    {
+        t->join();
+        delete t;
+        //t = nullptr;
+        state = COMPLETED;
+        time.waiting = false;
+        is_task_running = false;
+        time.ref = std::chrono::steady_clock::now();
+    }
+    else{
+        cout << "Task was not started. Dont try to join it!" << endl;
+    }
     return state;
+}
+/**
+ * Ustaw okresowość
+ *
+ * Metoda umożliwia okresowe wykonywanie się zadania
+ *
+ * @param milis Określa okres zadania w milisekundach
+ * @return none
+ */
+void Task::Set_Task_As_Cyclic(int _milis)
+{
+    cyclic = true; 
+    time.milis = std::chrono::milliseconds(_milis);
 }
 /**
  * Pokaż informacje o wątku
@@ -79,10 +103,11 @@ void Tasking::Task::Show_Task_Info()
 bool Task::Is_Task_Running() 
 {
     try{
-        if(Return_thread()->joinable())
+        if(t != nullptr)
         {
             return true;
-        }else
+        }
+        else
         {
             return false;
         }
@@ -101,10 +126,46 @@ bool Task::Is_Task_Running()
  * @param  arg Argumenty przekazywane do wątku.
  * @return none
  */
+void Task::Try_Start()
+{
+    if((time.waiting == false) && (is_task_running == false))
+    {
+        time.waiting = Period();
+    }
+    else
+    {
+        Start_Task();
+    }
+}
+/**
+ * Wykonaj zadanie.
+ *
+ * Metoda ta powołuje do życia wątek std::thread, co rozpoczyna jego pracę oraz blokuje mutex.
+ *
+ * @param  func Wskaźnik do funkcji która będzie wykonywana przez wątek.
+ * @param  arg Argumenty przekazywane do wątku.
+ * @return none
+ */
 template <typename Function, typename Argument>
 void Task::Execute_Task(Function func, Argument arg)
 {
+    state = Task::IN_PROGRESS;
     Handler1.Lock_Mutex();
     t = new std::thread(func, args);
-    state = IN_PROGRESS;
+}
+/**
+ * Sprawdź okres.
+ *
+ * Metoda ta sprawdza czy minął okres po którym zadanie musi zostać uruchomione ponownie
+ *
+ * @param  none 
+ * @return none
+ */
+bool Task::Period()
+{
+    if((std::chrono::steady_clock::now() - time.ref  > time.milis))
+    {
+        return true;
+    }
+    return false;
 }

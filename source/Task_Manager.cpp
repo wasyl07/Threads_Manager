@@ -22,6 +22,26 @@ int Tasking::Task_Handler::add_task(Task *newtask)
     return active_tasks.size();
 }
 /**
+ * Dodaj do vectora.
+ *
+ * Metoda dodaje nowo utworzony obiekt Task do vectora active_tasks.
+ *
+ * @param newtask Wskaźnik do obiektu Task.
+ * @return Liczbę obiektów w wektorze.
+ */
+Task_Handler::Operation_State Task_Handler::Resolve_thread_anonymity(std::thread::id _id)
+{
+    for(Task *t : active_tasks)
+    {
+        if(_id == t->return_thread_id())
+        {
+            cout << "Its a match! " << _id << " " << t->return_thread_id() << endl;
+            t->state = Task::COMPLETED;
+        }
+    }
+    return Task_Handler::Operation_State::OK;
+}
+/**
  * Rozpocznij pracę.
  *
  * Metoda uruchamia pracę wszystkich wątków w vectorze.
@@ -76,6 +96,26 @@ Task_Handler::Operation_State Task_Handler::End_Tasks()
     return Task_Handler::Operation_State::OK;
 }
 /**
+ * Zakończ pracę
+ *
+ * Kończy prace wszystkich wątków w vectorze.
+ * 
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
+ */
+Task_Handler::Operation_State Task_Handler::Spin_Tasks()
+{
+    for (std::vector<Task*>::iterator it = active_tasks.begin(); it != active_tasks.end(); it++)
+    {
+        if((*it)->Is_Task_Running() == true)
+        {
+            (*it)->join();
+            (*it)->state = Task::Task_State::COMPLETED;  
+        }
+    }
+    return Task_Handler::Operation_State::OK;
+}
+/**
  * Usuń obiekty
  *
  * Usuwa wszystkie obiekty Task z vectora.
@@ -87,6 +127,22 @@ Task_Handler::Operation_State Task_Handler::Purge()
 {
     active_tasks.clear();
     return Task_Handler::Operation_State::OK;
+}
+/**
+ * Pokaż ID
+ *
+ * Wypisuje identyfikatory pracujących wątków.
+ *
+ * @param  none
+ * @return Stan operacji. true jeśli się udało, false jeśli nie.
+ */
+Task_Handler::Operation_State Task_Handler::Select_FIFO(int num_of_threads)
+{
+    max_number_of_threads = num_of_threads;
+    queue = active_tasks;
+    Purge();
+    manage_FIFO_queue = new std::thread(&Task_Handler::FIFO_Algorithm, this);
+    return Operation_State::OK;
 }
 /**
  * Pokaż ID
@@ -124,10 +180,63 @@ int Task_Handler::get_number_of_tasks()
  * @param  go Zmienna określający czy wątek ma rozpocząć pracę odrazu po utworzeniu obiektu.
  * @return Stan obiektu Task.
  */
+/**
+ * Wykonaj cyklicznie
+ *
+ * Metoda przegląda zadania w wektorze active_tasks, i wykonuje te które są ozanczone jako okresowe.
+ *
+ * @param  none 
+ * @return none
+ */
+void Task_Handler::Cycle_Tasks()
+{
+    manage_cyclic_tasks = new std::thread(&Task_Handler::Spin, this);
+}
+/**
+ * Wykonaj kolejkę FIFO.
+ *
+ * Metoda przegląda zadania w wektorze active_tasks, i wykonuje te które są ozanczone jako okresowe.
+ *
+ * @param  none 
+ * @return none
+ */
 void Task_Handler::FIFO_Algorithm()
 {
-    if(active_tasks.size() != 0)
+    while(true)
     {
-        cout << "Number of active tasks: " << active_tasks.size() << endl;
+        while(active_tasks.size() < max_number_of_threads)
+        {
+            active_tasks.push_back(queue.back());
+            queue.pop_back();
+        }
+        Start_all_Tasks();
+        Spin_Tasks();
+        while(active_tasks.size() != 0)
+        {
+            queue.push_back(active_tasks.back());
+            active_tasks.pop_back();
+        }
     }
+}
+/**
+ * Wykonaj cyklicznie
+ *
+ * Metoda przegląda zadania w wektorze active_tasks, i wykonuje te które są ozanczone jako okresowe.
+ *
+ * @param  none 
+ * @return none
+ */
+void Task_Handler::Spin()
+{
+    do{ 
+        for(Task* t : active_tasks)
+        {
+            if(t->return_cyclic())
+            {
+                t->Try_Start();
+            }
+        }
+        Spin_Tasks();
+    }
+    while(true);
 }
