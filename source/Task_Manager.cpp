@@ -5,7 +5,8 @@
 using namespace Tasking;
 using namespace std;
 
-extern Task_Handler Handler1;
+
+Task_Handler Handler1;
 
 /**
  * Dodaj do vectora.
