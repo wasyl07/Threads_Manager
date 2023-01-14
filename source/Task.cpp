@@ -36,8 +36,12 @@ Tasking::Task::Task(Task_State(*fun_ptr)(arguments), arguments arg, bool go)
  */
 void Tasking::Task::Start_Task()
 {
-    is_task_running = true;
-    Execute_Task(ptr_arguments, args);
+    if(is_task_running == false)
+    {
+        is_task_running = true;
+        Execute_Task(ptr_arguments, args);
+    }
+
 }
 /**
  * Zakończ wątek.
@@ -51,7 +55,7 @@ Task::Task_State Task::join()
 {
     if(t != nullptr && (*t).joinable() || is_task_running == true)
     {
-        if(is_task_running && is_blocking)
+        if((state == IN_PROGRESS) && (is_blocking == true))
         {
 
         }

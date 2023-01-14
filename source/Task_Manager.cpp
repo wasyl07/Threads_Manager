@@ -34,10 +34,13 @@ Task_Handler::Operation_State Task_Handler::Resolve_thread_anonymity(std::thread
 {
     for(Task *t : active_tasks)
     {
-        if(_id == t->return_thread_id())
+        if(t->state != Task::CREATED)
         {
-            cout << "Its a match! " << _id << " " << t->return_thread_id() << endl;
-            t->state = Task::COMPLETED;
+            if(_id == t->return_thread_id())
+            {
+                //cout << "Its a match! " << _id << " " << t->return_thread_id() << endl;
+                t->state = Task::COMPLETED;
+            }
         }
     }
     return Task_Handler::Operation_State::OK;
@@ -111,7 +114,7 @@ Task_Handler::Operation_State Task_Handler::Spin_Tasks()
         if((*it)->Is_Task_Running() == true)
         {
             (*it)->join();
-            (*it)->state = Task::Task_State::COMPLETED;  
+            //(*it)->state = Task::Task_State::COMPLETED;  
         }
     }
     return Task_Handler::Operation_State::OK;

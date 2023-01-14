@@ -107,7 +107,13 @@ namespace Tasking
             //Metody zwracające dane na temat obiektu Task.
             Task_State return_state() {return state;}
             int return_id() {return id;}
-            std::thread::id return_thread_id() {return t->get_id();}
+            std::thread::id return_thread_id() 
+            {
+                if(t)
+                {
+                    return t->get_id();
+                }
+            }
             bool return_cyclic() {return cyclic;}
             void Try_Start();
         private:
