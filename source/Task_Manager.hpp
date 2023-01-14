@@ -90,6 +90,7 @@ namespace Tasking
             //Zmienna cyclic przyjmuje domyślnie wartość false;
             bool cyclic = false;
             bool is_task_running = false;
+            bool is_blocking = false;
             std::thread *t = nullptr;
             arguments args;
             Task_State(*ptr_arguments)(arguments);
@@ -99,7 +100,7 @@ namespace Tasking
             //Metody do rozpoczynania i kończenia pracy wątków.
             void Start_Task();
             Task_State join();
-            void Set_Task_As_Cyclic(int _milis);
+            void Set_Task_As_Cyclic(int _milis, bool _is_blocking);
             //Metody pokazujące dane i stan obiektów task.
             void Show_Task_Info();
             bool Is_Task_Running();

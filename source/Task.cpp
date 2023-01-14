@@ -49,15 +49,21 @@ void Tasking::Task::Start_Task()
  */
 Task::Task_State Task::join()
 {
-    if(t != nullptr && (*t).joinable())
+    if(t != nullptr && (*t).joinable() || is_task_running == true)
     {
-        t->join();
-        delete t;
-        //t = nullptr;
-        state = COMPLETED;
-        time.waiting = false;
-        is_task_running = false;
-        time.ref = std::chrono::steady_clock::now();
+        if(is_task_running && is_blocking)
+        {
+
+        }
+        else
+        {
+            t->join();
+            t = nullptr;
+            state = COMPLETED;
+            time.waiting = false;
+            is_task_running = false;
+            time.ref = std::chrono::steady_clock::now();
+        }
     }
     else{
         cout << "Task was not started. Dont try to join it!" << endl;
@@ -72,9 +78,10 @@ Task::Task_State Task::join()
  * @param milis Określa okres zadania w milisekundach
  * @return none
  */
-void Task::Set_Task_As_Cyclic(int _milis)
+void Task::Set_Task_As_Cyclic(int _milis, bool _is_blocking)
 {
     cyclic = true; 
+    is_blocking = _is_blocking;
     time.milis = std::chrono::milliseconds(_milis);
 }
 /**
